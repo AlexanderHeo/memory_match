@@ -4,57 +4,45 @@ function initializeApp() {
 $(".cards").on("click", handleCardClick);
 }
 
+var firstCardClicked = null;
+var secondCardClicked = null;
+var matches = null;
+
 function handleCardClick(event) {
   // debugger;
-  console.log("event", event);
-  var clicked = $(event.currentTarget);
-  clicked.find(".cardBack").addClass("hidden");
-  console.log('clicked:', clicked);
-  // console.log('currentTarget:', event.currentTarget);
-  // var clickedOnBack = $("event.currentTarget");//.children();//.find(".cardBack");
-  // console.log("clickedOnBack:",clickedOnBack);
-  // clickedOnBack.addClass("hidden");
+  // console.log("event", event);
+  var clickedCardBack = $(event.currentTarget).find(".cardBack");
+  var clickedCardFront = $(event.currentTarget).find(".cardFront");
+  clickedCardBack.addClass("hidden");
+  // console.log('clickedCardBack:', clickedCardBack);
+
+  if (!firstCardClicked) {
+    firstCardClicked = clickedCardFront;
+  } else {
+    // debugger
+    secondCardClicked = clickedCardFront;
+  }
+
+  // console.log('firstCardClicked:', firstCardClicked);
+  // console.log('secondCardClicked:', secondCardClicked);
+  var firstCardImage = firstCardClicked.css("background-image");
+  var secondCardImage = secondCardClicked.css("background-image");
+  // debugger;
+  // console.log("firstCardImage:", firstCardImage);
+  // console.log("secondCardImage:", secondCardImage);
+  if (firstCardImage === secondCardImage) {
+    matches++;
+    console.log("cards match!");
+    console.log("matches:",matches);
+  } else {
+    console.log("cards do not match!");
+    console.log("matches:", matches);
+    // firstCardClicked.siblings().removeClass('hidden');
+    // secondCardClicked.siblings().removeClass('hidden');
+
+    // console.log('firstCardClicked:', firstCardClicked);
+    // console.log('secondCardClicked:', secondCardClicked);
+    setTimeout(function(){firstCardClicked.siblings().removeClass("hidden");}, 1500);
+    setTimeout(function(){secondCardClicked.siblings().removeClass("hidden");}, 1500);
+  }
 }
-
-// $(document).ready(initializeApp);
-
-// function initializeApp() {
-//   $(".cards").on("click", handleCardClick);
-// }
-
-// function handleCardClick(event) {
-//   console.log('event', event); //"click" of div.cardBack
-//   console.log('currentTarget', event.currentTarget); //div.cards
-//   debugger;
-//   $(event.currentTarget).children().find(".cardBack").addClass("hidden");
-
-//   // target.addClass("hidden");
-
-
-
-//   // firstCardClicked = $(event.currentTarget);
-//   // firstCardImage = firstCardClicked.parent().find(".cardFront").css("background-image");
-
-//   if (!firstCardClicked) {
-//     firstCardClicked = $(event.currentTarget)//.parent().find(".cardFront").css("background-image");
-//     // debugger;
-//     // var firstCardParent = firstCard.parent()
-//     // var firstCardFront = firstCardParent.find(".cardFront")
-//     // var firstCardClicked = firstCardFront.css("background-image");
-//     // debugger;
-//   } else {
-//     secondCardClicked = $(event.currentTarget)//.parent().find(".cardFront");
-//     // console.log(firstCardImage);
-//     // debugger;
-//   }
-
-
-//   // secondCardClicked = secondCard.parent().find(".cardFront").css("background-image");
-//   // if ( firstCardClicked === secondCardClicked) {
-//   //   matches++;
-//   //   } else {
-//   //     firstCard.removeClass("hidden");
-//   //     secondCard.removeClass("hidden");
-//   //   }
-
-// }
