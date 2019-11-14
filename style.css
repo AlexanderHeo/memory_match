@@ -1,0 +1,119 @@
+body {
+  margin: 0;
+}
+.header, .game, .statsBox, .stats, .main, .cards{
+  border: 1px solid skyblue;
+}
+.header {
+  height: 15vh;
+  font-size: 3rem;
+  text-align: center;
+
+}
+.game {
+  display: flex;
+  height: 85vh;
+  margin: auto;
+}
+.statsBox {
+  width: 20%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.stats {
+  display: flex;
+  height: 80%;
+  width: 80%;
+  justify-content: center;
+  align-items: center;
+}
+.main {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+}
+.row {
+  display: flex;
+  height: 100%;
+  margin: 2% 0%;
+}
+.cards {
+  width: 100%;
+  height: 100%;
+  margin: 0% 2%;
+}
+
+/* body {
+  width: 1000px;
+  font-size: 0;
+}
+header {
+  width: 1000px;
+  height: 75px;
+  background-color: skyblue;
+  text-align: center;
+  font-size: 65px;
+}
+div.game {
+  text-align: center;
+  font-size: 30px;
+  display: flex;
+  width: 1000px;
+  height: 500px;
+  background-color: blueviolet;
+}
+aside {
+  display: flex;
+  align-items: center;
+  /* justify-content: center;
+  flex-direction: column;
+  /* width: 250px;
+  height: 500px;
+  background-color: gainsboro;
+}
+div.stats {
+  width: 200px;
+  height: 70px;
+  background-color: gray;
+  margin: 7px 25px;
+  padding: 12px;
+}
+div.statsTitle {
+  text-align: center;
+  font-size: 38px;
+  width: 250px;
+  height: 45px;
+}
+main {
+  width: 750px;
+  height: 500px;
+  background-color: chartreuse;
+}
+div.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  height: 450px;
+  width: 620px;
+  background-color: lime;
+  margin: 24px 48px;
+}
+div.cards {
+  height: 120px;
+  width: 80px;
+  background-color: slateblue;
+  margin: 10px;
+}
+div.cardFront {
+  display: absolute;
+  height: 120px;
+  width: 80px;
+  background-color: orange;
+}
+div.cardBack {
+  display: absolute;
+  height: 120px;
+  width: 80px;
+  background-color: yellow;
+} */
