@@ -4,7 +4,7 @@ body {
   background-position: center;
   background-size: cover;
 }
-.header, .game, .statsBox, .stats, .main, .cards{
+.header, .game, .statsBox, .stats, .main, .row, .cards{
   border: 1px solid skyblue;
 }
 .header {
@@ -41,27 +41,26 @@ body {
   display: flex;
   height: 100%;
   margin: 2% 0%;
-  border: 1px solid powderblue;
 }
 .cards {
-  width: 100%;
+  width: 100px;
   height: 100%;
   margin: 0% 2%;
   position: relative;
 }
-.cardFront {
-  background-image: url("./assets/images/css-logo.png");
+.cardFront, .cardBack {
   background-size: cover;
   background-position: center;
   height: 100%;
   width: 100%;
   position: absolute;
 }
+.cardFront {
+  background-image: url("./assets/images/css-logo.png");
+}
 .cardBack {
   background-image: url("./assets/images/lfz-card.jpg");
-  background-size: cover;
-  background-position: center;
-  height: 100%;
-  width: 100%;
-  position: absolute;
+}
+.hidden {
+  display: none;
 }
