@@ -2,6 +2,7 @@ $(document).ready(initializeApp);
 
 function initializeApp() {
 $(".cards").on("click", handleCardClick);
+randomizeCardClass();
 }
 
 var firstCardClicked = null;
@@ -9,6 +10,9 @@ var secondCardClicked = null;
 var matches = null;
 
 function handleCardClick(event) {
+    if ($(event.currentTarget).find(".cardBack").hasClass("hidden")) {
+      return;
+    }
   // debugger;
   // console.log("event", event);
   var clickedCardBack = $(event.currentTarget).find(".cardBack");
@@ -19,30 +23,31 @@ function handleCardClick(event) {
   if (!firstCardClicked) {
     firstCardClicked = clickedCardFront;
   } else {
-    // debugger
     secondCardClicked = clickedCardFront;
-  }
+    var firstCardImage = firstCardClicked.css("background-image");
+    var secondCardImage = secondCardClicked.css("background-image");
 
-  // console.log('firstCardClicked:', firstCardClicked);
-  // console.log('secondCardClicked:', secondCardClicked);
-  var firstCardImage = firstCardClicked.css("background-image");
-  var secondCardImage = secondCardClicked.css("background-image");
-  // debugger;
-  // console.log("firstCardImage:", firstCardImage);
-  // console.log("secondCardImage:", secondCardImage);
-  if (firstCardImage === secondCardImage) {
-    matches++;
-    console.log("cards match!");
-    console.log("matches:",matches);
-  } else {
-    console.log("cards do not match!");
-    console.log("matches:", matches);
-    // firstCardClicked.siblings().removeClass('hidden');
-    // secondCardClicked.siblings().removeClass('hidden');
-
-    // console.log('firstCardClicked:', firstCardClicked);
-    // console.log('secondCardClicked:', secondCardClicked);
-    setTimeout(function(){firstCardClicked.siblings().removeClass("hidden");}, 1500);
-    setTimeout(function(){secondCardClicked.siblings().removeClass("hidden");}, 1500);
+    if (firstCardImage === secondCardImage) {
+      matches++;
+      firstCardClicked = null;
+      secondCardClicked = null;
+    } else {
+      setTimeout(function () {
+      firstCardClicked.siblings().removeClass("hidden");
+      secondCardClicked.siblings().removeClass("hidden");
+      firstCardClicked = null;
+      secondCardClicked = null;
+      }, 1500);
+    }
   }
 }
+
+
+// randomize cardClasses and use jQuery to add them to proper divs
+// will need to use each class twice, and no more...
+// function randomizeCardClass () {
+//   var cardFrontClasses = [".css", ".docker", "gitHub", "html", "js", "mysql", "node", "php", "react"];
+
+//   var classIndex = Math.floor(Math.random() *10)+1;
+
+// }
