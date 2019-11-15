@@ -3,6 +3,7 @@ body {
   background-image: url("./assets/images/lfz-background.jpg");
   background-position: center;
   background-size: cover;
+  background-repeat: no-repeat;
 }
 .header, .game, .statsBox, .stats, .main, .row, .cards{
   border: 1px solid skyblue;
@@ -24,7 +25,13 @@ body {
   align-items: center;
   font-size: 1.5rem;
 }
-.stats {
+.statsTitle {
+  font-size: 2rem;
+}
+.stats,
+.statsPlayed,
+.statsAttempt,
+.statsAccuracy {
   display: flex;
   height: 80%;
   width: 80%;
