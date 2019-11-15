@@ -2,12 +2,13 @@ $(document).ready(initializeApp);
 
 function initializeApp() {
 $(".cards").on("click", handleCardClick);
-randomizeCardClass();
+// randomizeCardClass();
 }
 
 var firstCardClicked = null;
 var secondCardClicked = null;
 var matches = null;
+var max_matches = 2;
 
 function handleCardClick(event) {
     if ($(event.currentTarget).find(".cardBack").hasClass("hidden")) {
@@ -28,9 +29,13 @@ function handleCardClick(event) {
     var secondCardImage = secondCardClicked.css("background-image");
 
     if (firstCardImage === secondCardImage) {
+      debugger;
       matches++;
       firstCardClicked = null;
       secondCardClicked = null;
+      if (max_matches === matches) {
+        $(".winModal").removeClass("hidden");
+      }
     } else {
       setTimeout(function () {
       firstCardClicked.siblings().removeClass("hidden");

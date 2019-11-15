@@ -100,3 +100,14 @@ body {
 .react {
   background-image: url("./assets/images/react-logo.png");
 }
+.winModal {
+  position: fixed;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  background-color: darkblue;
+  color: yellow;
+  font-size: 12rem;
+  text-align: center;
+
+}
