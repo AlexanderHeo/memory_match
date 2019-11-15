@@ -8,7 +8,7 @@ $(".cards").on("click", handleCardClick);
 var firstCardClicked = null;
 var secondCardClicked = null;
 var matches = null;
-var max_matches = 2;
+var max_matches = 9;
 
 function handleCardClick(event) {
     if ($(event.currentTarget).find(".cardBack").hasClass("hidden")) {
@@ -29,7 +29,6 @@ function handleCardClick(event) {
     var secondCardImage = secondCardClicked.css("background-image");
 
     if (firstCardImage === secondCardImage) {
-      debugger;
       matches++;
       firstCardClicked = null;
       secondCardClicked = null;
