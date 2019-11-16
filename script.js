@@ -152,15 +152,15 @@ function resetStats () {
 
 var h=0;
 var cardClassArray =[
-  'css', 'css',
-  'docker', 'docker',
-  'gitHub', 'gitHub',
-  'html', 'html',
-  'js', 'js',
-  'mysql', 'mysql',
-  'node', 'node',
-  'php', 'php',
-  'react', 'react',
+  'bag', 'bag',
+  'bathroom', 'bathroom',
+  'book', 'book',
+  'cat', 'cat',
+  'desk', 'desk',
+  'dog', 'dog',
+  'house', 'house',
+  'pen', 'pen',
+  'shoe', 'shoe',
 ];
 
 /* PSEUDO FOR - function createRowsOfCards
@@ -275,20 +275,22 @@ function cardClassRandom(array) {
 
 
 /* ********************************************************************
-spanish module feature
-when two cards match, value of var englishWord = english word
-  -take name of class of cardFront, slice off . to return just the word
-  -take value of englishWord and find equivalent word in spanish
-    -from object with english keys and spanish values
-  -value of var spanishWord = spanish translation
+spanish modal feature
+when two cards match:
+value of var englishWord = english word
+  -take name of class of cardFront
+take value of englishWord and find equivalent word in spanish
+  -from object with english keys and spanish values
+    -value of var spanishWord = spanish translation
 module pops up with message and three buttons with three different  words in spanish
   -Hey, you matched the cards! Now do you know what it is in spanish?
   -buttons will be populated from spanishWordsArray
     -randomize the array via Fisher-Yates method
+    -add spanishWord to beginning of spanishWordsArray using unshift()
     -take first three index into array spanishAnswersArray
 randomize spanishAnswersArray to populate buttons
   -button with the correct answer will have added class of .answer
     -search for spanishAnswerButton divs with text of spanishWord
-    -addClass .hidden to div
+    -eventlistener of click on answer button to addClass .hidden to spanish modal div
 if correct spanish word is chosen, cards stay front side up
   -if wrong spanish word is chosen, cards "flip" back*/

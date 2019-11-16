@@ -1,22 +1,31 @@
 body {
   margin: 0;
-  background-image: url("./assets/images/lfz-background.jpg");
+  background-image: url("./assets/DoraPics/background.jpg");
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
 }
-.header, .game, .statsBox, .stats, .main, .row, .cards{
-  border: 1px solid skyblue;
-}
+/* .header, .game, .statsBox, .stats, .main, .row, .cards{
+  border: 1px solid pink;
+} */
 .header {
   height: 15vh;
   font-size: 3rem;
   text-align: center;
 }
+.cards {
+  border: 1px solid hotpink;
+}
 .game {
   display: flex;
   height: 85vh;
   margin: auto;
+}
+.stats,
+.statsPlayed,
+.statsAttempt,
+.statsAccuracy {
+  border: 1px solid hotpink;
 }
 .statsBox {
   width: 20%;
@@ -38,8 +47,8 @@ body {
   justify-content: center;
   align-items: center;
   font-size: 1rem;
-  background-color: lightblue;
-  border: 1px solid skyblue;
+  background-color: pink;
+  /* border: 1px solid skyblue; */
 }
 .main {
   width: 80%;
@@ -59,15 +68,15 @@ body {
 }
 .cardFront,
 .cardBack,
-.css,
-.docker,
-.gitHub,
-.html,
-.js,
-.mysql,
-.node,
-.php,
-.react {
+.bag,
+.bathroom,
+.book,
+.cat,
+.desk,
+.dog,
+.house,
+.pen,
+.shoe {
   background-size: cover;
   background-position: center;
   height: 100%;
@@ -75,37 +84,37 @@ body {
   position: absolute;
 }
 .cardBack {
-  background-image: url("./assets/images/lfz-card.jpg");
+  background-image: url("./assets/DoraPics/cardBack.jpg");
 }
 .hidden {
   display: none;
 }
-.css {
-  background-image: url("./assets/images/css-logo.png");
+.bag {
+  background-image: url("./assets/DoraPics/bag.jpg");
 }
-.docker {
-  background-image: url("./assets/images/docker-logo.jpg");
+.bathroom {
+  background-image: url("./assets/DoraPics/bathroom.jpg");
 }
-.gitHub {
-  background-image: url("./assets/images/gitHub-logo.png");
+.book {
+  background-image: url("./assets/DoraPics/book.jpg");
 }
-.html {
-  background-image: url("./assets/images/html-logo.png");
+.cat {
+  background-image: url("./assets/DoraPics/cat.png");
 }
-.js {
-  background-image: url("./assets/images/js-logo.png");
+.desk {
+  background-image: url("./assets/DoraPics/desk.jpg");
 }
-.mysql {
-  background-image: url("./assets/images/mysql-logo.jpg");
+.dog {
+  background-image: url("./assets/DoraPics/dog.jpg");
 }
-.node {
-  background-image: url("./assets/images/node-logo.png");
+.house {
+  background-image: url("./assets/DoraPics/house.png");
 }
-.php {
-  background-image: url("./assets/images/php-logo.jpeg");
+.pen {
+  background-image: url("./assets/DoraPics/pen.jpg");
 }
-.react {
-  background-image: url("./assets/images/react-logo.png");
+.shoe {
+  background-image: url("./assets/DoraPics/shoes.jpg");
 }
 .winModal {
   position: fixed;
