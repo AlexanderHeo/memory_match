@@ -1,0 +1,120 @@
+body {
+  margin: 0;
+  background-image: url("./assets/images/lfz-background.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.header, .game, .statsBox, .stats, .main, .row, .cards{
+  border: 1px solid skyblue;
+}
+.header {
+  height: 15vh;
+  font-size: 3rem;
+  text-align: center;
+}
+.game {
+  display: flex;
+  height: 85vh;
+  margin: auto;
+}
+.statsBox {
+  width: 20%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 1.5rem;
+}
+.statsTitle {
+  font-size: 2rem;
+}
+.stats,
+.statsPlayed,
+.statsAttempt,
+.statsAccuracy {
+  display: flex;
+  height: 80%;
+  width: 80%;
+  justify-content: center;
+  align-items: center;
+  font-size: 1rem;
+  background-color: lightblue;
+  border: 1px solid skyblue;
+}
+.main {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+}
+.row {
+  display: flex;
+  height: 100%;
+  margin: 2% 0%;
+}
+.cards {
+  width: 100px;
+  height: 100%;
+  margin: 0% 2%;
+  position: relative;
+}
+.cardFront,
+.cardBack,
+.css,
+.docker,
+.gitHub,
+.html,
+.js,
+.mysql,
+.node,
+.php,
+.react {
+  background-size: cover;
+  background-position: center;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+}
+.cardBack {
+  background-image: url("./assets/images/lfz-card.jpg");
+}
+.hidden {
+  display: none;
+}
+.css {
+  background-image: url("./assets/images/css-logo.png");
+}
+.docker {
+  background-image: url("./assets/images/docker-logo.jpg");
+}
+.gitHub {
+  background-image: url("./assets/images/gitHub-logo.png");
+}
+.html {
+  background-image: url("./assets/images/html-logo.png");
+}
+.js {
+  background-image: url("./assets/images/js-logo.png");
+}
+.mysql {
+  background-image: url("./assets/images/mysql-logo.jpg");
+}
+.node {
+  background-image: url("./assets/images/node-logo.png");
+}
+.php {
+  background-image: url("./assets/images/php-logo.jpeg");
+}
+.react {
+  background-image: url("./assets/images/react-logo.png");
+}
+.winModal {
+  position: fixed;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  background-color: darkblue;
+  color: yellow;
+  font-size: 12rem;
+  text-align: center;
+
+}
