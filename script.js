@@ -78,7 +78,7 @@ function resetStats () {
   // debugger;
   matches = 0;
   attempts = 0;
-  games_played++;
+  // games_played++;
   displayStats();
   $(".statsAccuracy").text('0%');
   $(".cards").children(".cardBack").removeClass("hidden");
