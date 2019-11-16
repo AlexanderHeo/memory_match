@@ -6,10 +6,11 @@ $(".cards").on("click", handleCardClick);
 
 var firstCardClicked = null;
 var secondCardClicked = null;
-var matches = null;
-var max_matches = 9;
+var matches = 0;
+var max_matches = 2;
 var attempts = 0;
 var games_played = 0;
+// var accuracy = 0;
 
 function handleCardClick(event) {
     if ($(event.currentTarget).find(".cardBack").hasClass("hidden")) {
@@ -33,14 +34,16 @@ function handleCardClick(event) {
 
     if (firstCardImage === secondCardImage) {
       matches++;
-      console.log("matches", matches);
+      // console.log("matches", matches);
       firstCardClicked = null;
       secondCardClicked = null;
       $(".cards").on("click", handleCardClick);
       if (max_matches === matches) {
         $(".winModal").removeClass("hidden");
         games_played++;
-        console.log("games_played:", games_played);
+        resetStats();
+        return;
+        // console.log("games_played:", games_played);
       }
     } else {
       setTimeout(function () {
@@ -52,18 +55,34 @@ function handleCardClick(event) {
       }, 1500);
     }
     attempts++;
-    console.log("attempts", attempts);
+    // console.log("attempts", attempts);
     displayStats();
   }
 }
 function displayStats () {
-  var accur = calculateAccuracy(attempts, matches);
+  // if (typeof accuracy ==="string") {
+  //   accuracy = 0;
+  // }
+  var accur = calculateAccuracy();
   $(".statsPlayed").text(games_played);
   $(".statsAttempt").text(attempts);
-  $(".statsAccuracy").text(accur + "%");
+  $(".statsAccuracy").text(accur);
 }
 
-function calculateAccuracy (attempts, matches) {
-  var accuracy = Math.round((matches/attempts)*100);
-  return accuracy;
+function calculateAccuracy () {
+  var percentage = matches/attempts;
+  return Math.round(percentage*100);
+}
+
+function resetStats () {
+  // debugger;
+  matches = 0;
+  attempts = 0;
+  games_played++;
+  displayStats();
+  $(".statsAccuracy").text('0%');
+  $(".cards").children(".cardBack").removeClass("hidden");
+  setTimeout(function() {
+    $(".winModal").addClass("hidden");
+  }, 2000)
 }
