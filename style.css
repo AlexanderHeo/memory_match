@@ -140,40 +140,9 @@ span {
   width: 55%;
   height: 80%;
   background-image: url('./assets/DoraPics/modalBackground.jpg');
+  color: blue;
+  text-shadow: 1px 1px yellow;
   font-size: 7.2rem;
   text-align: center;
   border-radius: 20px;
-}
-
-.spanishModal {
-  /* position: fixed; */
-  display: flex;
-  flex-wrap: wrap;
-  /* top: 20%;
-  right: 0; */
-  width: 100%;
-  height: 100%;
-  background-image: url('./assets/DoraPics/modalBackground.jpg');
-  text-align: center;
-  border-radius: 20px;
-}
-.spanishQuestion {
-  height: 25%;
-  width: 100%;
-  font-size: 1.8rem;
-  background-color: palegreen;
-}
-.spanishAnswers {
-  height: 75%;
-  width: 100%;
-  display: flex;
-  flex-wrap: wrap;
-  background-color: orange;
-}
-.spanishAnswerButton {
-  height: 30%;
-  width: 40%;
-  margin: auto;
-  background-color: blue;
-  border-radius: 10px 30px;
 }

@@ -6,19 +6,17 @@ function initializeApp() {
   cardClassRandom(cardClassArray);
   createRowsOfCards();
   $(".cards").on("click", handleCardClick);
-
 }
 
 //variables created in global space, so can be used in multiple functions
 var firstCardClicked = null;
 var secondCardClicked = null;
 var matches = 0;
-var max_matches = 1;
+var max_matches = 9;
 var attempts = 0;
 var games_played = 0;
 
 function handleCardClick(event) {
-
   //$(event.currentTarget) is the div where the event of click happened
   //which is div.cards, searches for child div with class of .cardBack
   //and checks to see if that child has a class of .hidden
@@ -75,17 +73,6 @@ function handleCardClick(event) {
       firstCardClicked = null;
       secondCardClicked = null;
       $(".cards").on("click", handleCardClick);
-
-      //call function to bring up the spanish question
-        //modal, sending an arguement of the class of
-        //the matched cards
-      spanishQuestion(matchedClass);
-      /* *****************************************
-      ********************************************
-      *****************************************
-      need an if loop here to end round or flip cards
-      back depending on whether spanish answer
-      is true or false*/
 
       //if value of matches is equal to max_matches (9)
       //the .hidden class is removed from div.winModal to expose it
@@ -206,7 +193,7 @@ function createRowsOfCards() {
     for (var cards = 0; cards < 6; cards++) {
       var newCard = $('<div>', { class: 'cards' });
       var newCardFront = $('<div>', { class: 'cardFront' });
-      var newCardBack = $('<div>', { class: 'cardBack, hidden' });
+      var newCardBack = $('<div>', { class: 'cardBack' });
 
       newCardFront.addClass(cardClassArray[h]);
       h++
@@ -225,75 +212,6 @@ function cardClassRandom(array) {
 
   // while there remain elements to shuffle…
   while (arrLength) {
-    //use the .floor method to round down, because arrays are index 0
-    //and to prevent from choosing the final index of the front portion
-    //effectively doing nothing
-    //multiplying a decrementing arrLength keeps the already
-    //"shuffled" index at the end, and only shuffles from the
-    //front portion of the array
-    randomIndex = Math.floor(Math.random() * arrLength--);
-    //takes randomIndex and swap it with the arrLength using temp var
-    temp = array[arrLength];
-    array[arrLength] = array[randomIndex];
-    array[randomIndex] = temp;
-  }
-  return array;
-}
-
-//function for spanish question modal to win the point
-//takes a parameter of a string called cardClass
-//create children divs of div.spanishModal
-  //attach click listener on each button that returns
-  //the text of clicked button, set as value of var clickedAnswer
-//create array of spanish words, send as argument to
-  //cardClassRandom function to randomize entire array
-  //then .unshift(cardClass) to add the matched card's
-  //class to beginning of array.
-  //send array as argument to
-  //spanishWordsRandom to randomize first four
-  //indexes of array to use
-  //as random answer in spanish question modal
-//takes first four indexes of randomized array
-  //set as text of spanishAnswerButtons
-//if cardClass === clickedAnswer return true,
-  //otherwise, return false
-  //addClass hidden to div.winModal and empty()
-  //all children divs
-var spanishWords = [
-  'hoy', 'manana', 'ayer', 'hora', 'que', 'nada', 'todo', 'uno', 'dos', 'tres', 'quatro', 'cinco', 'siete', 'sies', 'ocho', 'nueve, dias'
-];
-
-function spanishQuestion(cardClass) {
-debugger;
-  var spanishAnswers = $('<div>', { class: 'spanishAnswers'});
-  var spanishQuestion = $('<div>', { class: 'spanishQuestion'});
-  var spanishModal = $('.spanishModal');
-
-  spanishModal.append(spanishQuestion);
-  for (var i=0; i<4; i++) {
-    var spanishButton = $('<div>', { class: 'spanishAnswerButton'});
-
-    spanishAnswers.append(spanishButton);
-  }
-  spanishModal.append(spanishAnswers);
-  spanishButton.on('click', spanishCompare);
-}
-
-function spanishCompare (event) {
-
-
-
-}
-
-  var randomSpanishWords =  cardClassRandom(spanishWords);
-
-
-//use Fisher Yates method to shuffle only first four positions
-function spanishWordsRandom(array) {
-  var arrLength = array.length, temp, randomIndex;
-
-  // only shuffle first four elements
-  while (arrLength < 4) {
     //use the .floor method to round down, because arrays are index 0
     //and to prevent from choosing the final index of the front portion
     //effectively doing nothing
