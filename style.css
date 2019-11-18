@@ -1,57 +1,65 @@
 body {
   margin: 0;
-  background-image: url("./assets/DoraPics/background.jpg");
+  background-image: url('./assets/DoraPics/background.jpg');
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
 }
-/* .header, .game, .statsBox, .stats, .main, .row, .cards{
-  border: 1px solid pink;
-} */
-.header {
-  height: 15vh;
-  font-size: 3rem;
-  text-align: center;
-}
-.cards {
-  border: 1px solid hotpink;
+.header,
+.game,
+.left,
+.right
+.statsBox,
+.main {
+  border: 1px solid red;
 }
 .game {
   display: flex;
-  height: 85vh;
+  height: 100vh;
   margin: auto;
 }
-.stats,
-.statsPlayed,
-.statsAttempt,
-.statsAccuracy {
-  border: 1px solid hotpink;
+.left {
+  width: 45%;
 }
-.statsBox {
-  width: 20%;
+.right {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  font-size: 1.5rem;
+  width: 55%;
 }
-.statsTitle {
+.header {
   font-size: 2rem;
+  text-align: center;
+  margin: auto;
+  color:  blue;
+  text-shadow: 1px 1px yellow;
+}
+.statsBox {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  /* height: 20%; */
+  text-align: center;
 }
 .stats,
 .statsPlayed,
 .statsAttempt,
 .statsAccuracy {
-  display: flex;
-  height: 80%;
-  width: 80%;
-  justify-content: center;
-  align-items: center;
-  font-size: 1rem;
+  height: 45%;
+  width: 30%;
+  text-align: center;
+  font-size: 1.3rem;
+  margin: auto;
+  border: 1px solid rgb(255, 105, 143);
+  border-radius: 25px;
+  color:  blue;
   background-color: pink;
-  /* border: 1px solid skyblue; */
+  text-shadow: 1px 1px yellow;
+}
+span {
+  display: inline;
 }
 .main {
-  width: 80%;
+  height: 80%;
   display: flex;
   flex-direction: column;
 }
@@ -66,8 +74,13 @@ body {
   margin: 0% 2%;
   position: relative;
 }
-.cardFront,
-.cardBack,
+ .cardFront {
+   background-size: contain;
+ }
+ .cardBack {
+  background-size: contain;
+ }
+.cardBack, .cardFront,
 .bag,
 .bathroom,
 .book,
@@ -77,11 +90,15 @@ body {
 .house,
 .pen,
 .shoe {
-  background-size: cover;
+  background-size: contain;
   background-position: center;
-  height: 100%;
-  width: 100%;
+  background-repeat: no-repeat;
+  background-color: white;
+  height: 150px;
+  width: 100px;
   position: absolute;
+  border: 1px solid brown;
+  border-radius: 30px;
 }
 .cardBack {
   background-image: url("./assets/DoraPics/cardBack.jpg");
@@ -99,7 +116,7 @@ body {
   background-image: url("./assets/DoraPics/book.jpg");
 }
 .cat {
-  background-image: url("./assets/DoraPics/cat.png");
+  background-image: url("./assets/DoraPics/cat.jpg");
 }
 .desk {
   background-image: url("./assets/DoraPics/desk.jpg");
@@ -108,7 +125,7 @@ body {
   background-image: url("./assets/DoraPics/dog.jpg");
 }
 .house {
-  background-image: url("./assets/DoraPics/house.png");
+  background-image: url("./assets/DoraPics/house.jpg");
 }
 .pen {
   background-image: url("./assets/DoraPics/pen.jpg");
@@ -118,12 +135,45 @@ body {
 }
 .winModal {
   position: fixed;
-  top: 0;
-  height: 100%;
-  width: 100%;
-  background-color: darkblue;
-  color: yellow;
-  font-size: 12rem;
+  top: 20%;
+  right: 0;
+  width: 55%;
+  height: 80%;
+  background-image: url('./assets/DoraPics/modalBackground.jpg');
+  font-size: 7.2rem;
   text-align: center;
+  border-radius: 20px;
+}
 
+.spanishModal {
+  /* position: fixed; */
+  display: flex;
+  flex-wrap: wrap;
+  /* top: 20%;
+  right: 0; */
+  width: 100%;
+  height: 100%;
+  background-image: url('./assets/DoraPics/modalBackground.jpg');
+  text-align: center;
+  border-radius: 20px;
+}
+.spanishQuestion {
+  height: 25%;
+  width: 100%;
+  font-size: 1.8rem;
+  background-color: palegreen;
+}
+.spanishAnswers {
+  height: 75%;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  background-color: orange;
+}
+.spanishAnswerButton {
+  height: 30%;
+  width: 40%;
+  margin: auto;
+  background-color: blue;
+  border-radius: 10px 30px;
 }

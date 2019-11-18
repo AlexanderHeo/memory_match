@@ -13,19 +13,20 @@ function initializeApp() {
 var firstCardClicked = null;
 var secondCardClicked = null;
 var matches = 0;
-var max_matches = 2;
+var max_matches = 1;
 var attempts = 0;
 var games_played = 0;
 
 function handleCardClick(event) {
+
   //$(event.currentTarget) is the div where the event of click happened
   //which is div.cards, searches for child div with class of .cardBack
-  //and checks to see if it has a class of .hidden
+  //and checks to see if that child has a class of .hidden
   //if it does have the .hidden class, exit function
   //this prevents reclicking on an already clicked card
   if ($(event.currentTarget).find(".cardBack").hasClass("hidden")) {
-      return;//to exit function
-    }
+    return;//to exit function
+  }
 
   //created two new variables to hold values of div.cardBack and div.cardFront
   //of the div.card that was clicked.
@@ -39,6 +40,7 @@ function handleCardClick(event) {
   //if not, then div.cardFront is set as value
   //if firstCardClicked does have a value, then
   //div.cardFront is set as value of secondCardClicked
+    //and we start process of comparing cards
   if (!firstCardClicked) {
     firstCardClicked = clickedCardFront;
   } else {
@@ -53,14 +55,19 @@ function handleCardClick(event) {
     }
 
     //created two new divs to hold the background-image of
-    //both cardsClicked
-    //the value is the url of the images clicked
+    //first and secondCardClicked, the value is the url of the images
     var firstCardImage = firstCardClicked.css("background-image");
     var secondCardImage = secondCardClicked.css("background-image");
 
+    //grab class of matched card and save as var matchedClass
+    var matchedCardBackClass = firstCardClicked.attr('class');
+    var stringLength = matchedCardBackClass.length;
+    var matchedClass = matchedCardBackClass.substring(10,stringLength);
+
+
     //if value of both image urls are equivalent
     //the value of matches is incremented by 1
-    //values of first and secondCardClicked is reset
+    //values of first and secondCardClicked are reset
     //and click listener that will call handleCardClick is
     //turned on for all div.cards
     if (firstCardImage === secondCardImage) {
@@ -69,11 +76,23 @@ function handleCardClick(event) {
       secondCardClicked = null;
       $(".cards").on("click", handleCardClick);
 
+      //call function to bring up the spanish question
+        //modal, sending an arguement of the class of
+        //the matched cards
+      spanishQuestion(matchedClass);
+      /* *****************************************
+      ********************************************
+      *****************************************
+      need an if loop here to end round or flip cards
+      back depending on whether spanish answer
+      is true or false*/
+
       //if value of matches is equal to max_matches (9)
       //the .hidden class is removed from div.winModal to expose it
       //value of games_played is incremented by 1
       //resetStats is called to reset the game
-      //and then exit function
+      //and then exit function (without the return, function jumps
+      //to line 101)
       if (max_matches === matches) {
         $(".winModal").removeClass("hidden");
         games_played++;
@@ -83,16 +102,16 @@ function handleCardClick(event) {
       //otherwise first and secondCardClicked do not hold equal value
       //which means same pictures were not clicked
       //wait 1.5 seconds before removing .hidden class from
-      //first and secondCardClicked
+      //"exposed" cards
       //reset values of first and secondCardClicked back to null
       //so they are ready for the next attempt
     } else {
       setTimeout(function () {
-      firstCardClicked.siblings().removeClass("hidden");
-      secondCardClicked.siblings().removeClass("hidden");
-      firstCardClicked = null;
-      secondCardClicked = null;
-      $(".cards").on("click", handleCardClick);
+        firstCardClicked.siblings().removeClass("hidden");
+        secondCardClicked.siblings().removeClass("hidden");
+        firstCardClicked = null;
+        secondCardClicked = null;
+        $(".cards").on("click", handleCardClick);
       }, 1500);
     }
     //after it has been decided the cards match or do not match
@@ -106,52 +125,52 @@ function handleCardClick(event) {
 //div.statsPlayed is selected, and the value of games_played is set as the text of that div
 //div.statsAttempt is selected and the value of attempts is set as the text of that div
 //div.statsAccuracy is selected and the value of accur is set as the text of that div
-function displayStats () {
+function displayStats() {
   var accur = calculateAccuracy();
   $(".statsPlayed").text(games_played);
   $(".statsAttempt").text(attempts);
-  $(".statsAccuracy").text(accur);
+  $(".statsAccuracy").text(accur + "%");
 }
 
 //takes the number of matches made divided by number of attempts
 //and sets that value to the variable percentage
 //the value of percentage is multiplied by 100, then rounds it to the
 //nearest integer, to return a whole number between 0-100
-function calculateAccuracy () {
-  var percentage = matches/attempts;
-  return Math.round(percentage*100);
+function calculateAccuracy() {
+  var percentage = matches / attempts;
+  return Math.round(percentage * 100);
 }
 
 //resets values of matches and attempts for new game
 //call displayStats to update stats
 //selects div.statsAccuracy and sets text of that div to 0%
+//because displayStats will return NaN after dividing by 0
 //removes class .hidden from all children divs of div.cards with class .cardBack
-//which "flips" the cards exposing the card back again
+//which "flips" the cards exposing the cardBack again
+//empty div.main to make room for next round of cards
 //adds class .hidden to div.winModal after 2 seconds, to hide the modal
-function resetStats () {
-  matches = 0;
-  attempts = 0;
-  displayStats();
-  $(".statsAccuracy").text('0%');
-  $(".cards").children(".cardBack").removeClass("hidden");
-  // debugger;
-  setTimeout(function() {
+function resetStats() {
+
+  setTimeout(function () {
     $(".winModal").addClass("hidden");
+    matches = 0;
+    attempts = 0;
+    displayStats();
+    $(".statsAccuracy").text('0%');
+
+    $(".cards").children(".cardBack").removeClass("hidden");
+
   }, 2000)
-  // debugger;
-  // $('.main').removeChild();
+
   $('.main').empty();
   initializeApp();
-  // cardClassRandom(cardClassArray);
-  // createRowsOfCards();
-  // initializeApp();
 }
 
-//*****************************************************************
-//dynamically creating all card divs
+//dynamically creating all row and card divs
+//create global variable set as array of all class names twice
+//so there will be two cards to match
 
-var h=0;
-var cardClassArray =[
+var cardClassArray = [
   'bag', 'bag',
   'bathroom', 'bathroom',
   'book', 'book',
@@ -163,31 +182,31 @@ var cardClassArray =[
   'shoe', 'shoe',
 ];
 
-/* PSEUDO FOR - function createRowsOfCards
-create div.row set as var newRow (looped 3x) {
-  create div.cards set as var newCard (looped 6x) {
+/*function createRowsOfCards
+create var h and set to 0 outside of loop to prevent infinite loop
+  this var will be used as index to pull card classes from randomized array
+select div.main and set to var mainCont
+create div.row set as var newRow and loop 3x to create 3 divs.row
+  loop 6x to create six div.card
+    create div.cards set as var newCard
     create div.cardBack set as var newCardBack
     create div.cardFront set as var newCardFront
-      addClass(.hidden) to newCardFront
-      addClass(randomizedCardClass[h]) to newCardBack
-      append newCardBack and newCardFront to newCard
-      h++ (so next loop will use next index of randomizedCardClass[])
-    }
+    add a class from the randomized array cardClassArray at index h, to newCardBack
+      increment h so it will grab the next index with each loop
+    append newCardBack and newCardFront to newCard
     append newCard to newRow
-  }
-  append newRow to .main
-  */
-
+append newRow to .main
+*/
 function createRowsOfCards() {
-  var h=0;
+  var h = 0;
   var mainCont = $('.main');
-  for (var rows=0; rows<3; rows++) {
-    var newRow = $('<div>', {class: 'row'});
+  for (var rows = 0; rows < 3; rows++) {
+    var newRow = $('<div>', { class: 'row' });
 
-    for (var cards=0; cards<6; cards++) {
-      var newCard = $('<div>', {class: 'cards'});
-      var newCardFront = $('<div>', {class: 'cardFront'});
-      var newCardBack = $('<div>', {class: 'cardBack'});
+    for (var cards = 0; cards < 6; cards++) {
+      var newCard = $('<div>', { class: 'cards' });
+      var newCardFront = $('<div>', { class: 'cardFront' });
+      var newCardBack = $('<div>', { class: 'cardBack, hidden' });
 
       newCardFront.addClass(cardClassArray[h]);
       h++
@@ -200,97 +219,92 @@ function createRowsOfCards() {
   }
 }
 
-
-
-
-
-
-
-
-
-
-
-
-  // function createRowsOfCards ()
-//   var newRow = $('<div>').addClass('row');
-
-//     for (var row=0; row<6; row++) {
-
-//       for (var card = 0; card < 6; card++) {
-//         var newCard = $('<div>').addClass('cards');
-//         var newCardBack = $('<div>').addClass('cardBack');
-//         var newCardFront = $('<div>').addClass('cardFront');
-//         newCard.append(newCardFront);
-//         newCard.append(newCardBack);
-//           // while (h<18) {
-//           // newCardFront.addClass('cardFront').addClass(cardClassArray[h]);
-//           // h++;
-//           // }
-//       }
-//       newRow.append(newCard);
-//     }
-//     $('.main').append(newRow);
-// }
-
-// function createRowsOfCards() {
-//   debugger;
-//   var newCard = $('<div.cards>');
-//   var newCardBack = $('<div.cardBack>');
-//   var newCardFront = $('<div.cardFront>');
-//   var newRow = $('<div.row>');
-//   for (var k=0; k<3; k++) {
-//     for (var j=0; j<3; j++) {
-//       for (var i=0; i<6; i++) {
-//         newCardBack.addClass("cardBack hidden");
-//         while (h<18) {
-//           newCardFront.addClass(cardClassArray[h]);
-//           h++
-//         }
-//         newCard.append(newCardFront);
-//         newCard.append(newCardBack);
-//       }
-//       $('.cardRow:nth-of-type(j+1)'.append(newCard));
-//     }
-//   }
-// }
-
-//randomize the array of all card classes
+//randomize the array of all card classes using Fisher Yates shuffle
 function cardClassRandom(array) {
-  var m = array.length, t, i;
+  var arrLength = array.length, temp, randomIndex;
 
-  // While there remain elements to shuffle…
-  while (m) {
-
-    // Pick a remaining element…
-    i = Math.floor(Math.random() * m--);
-
-    // And swap it with the current element.
-    t = array[m];
-    array[m] = array[i];
-    array[i] = t;
+  // while there remain elements to shuffle…
+  while (arrLength) {
+    //use the .floor method to round down, because arrays are index 0
+    //and to prevent from choosing the final index of the front portion
+    //effectively doing nothing
+    //multiplying a decrementing arrLength keeps the already
+    //"shuffled" index at the end, and only shuffles from the
+    //front portion of the array
+    randomIndex = Math.floor(Math.random() * arrLength--);
+    //takes randomIndex and swap it with the arrLength using temp var
+    temp = array[arrLength];
+    array[arrLength] = array[randomIndex];
+    array[randomIndex] = temp;
   }
   return array;
 }
 
+//function for spanish question modal to win the point
+//takes a parameter of a string called cardClass
+//create children divs of div.spanishModal
+  //attach click listener on each button that returns
+  //the text of clicked button, set as value of var clickedAnswer
+//create array of spanish words, send as argument to
+  //cardClassRandom function to randomize entire array
+  //then .unshift(cardClass) to add the matched card's
+  //class to beginning of array.
+  //send array as argument to
+  //spanishWordsRandom to randomize first four
+  //indexes of array to use
+  //as random answer in spanish question modal
+//takes first four indexes of randomized array
+  //set as text of spanishAnswerButtons
+//if cardClass === clickedAnswer return true,
+  //otherwise, return false
+  //addClass hidden to div.winModal and empty()
+  //all children divs
+var spanishWords = [
+  'hoy', 'manana', 'ayer', 'hora', 'que', 'nada', 'todo', 'uno', 'dos', 'tres', 'quatro', 'cinco', 'siete', 'sies', 'ocho', 'nueve, dias'
+];
+
+function spanishQuestion(cardClass) {
+debugger;
+  var spanishAnswers = $('<div>', { class: 'spanishAnswers'});
+  var spanishQuestion = $('<div>', { class: 'spanishQuestion'});
+  var spanishModal = $('.spanishModal');
+
+  spanishModal.append(spanishQuestion);
+  for (var i=0; i<4; i++) {
+    var spanishButton = $('<div>', { class: 'spanishAnswerButton'});
+
+    spanishAnswers.append(spanishButton);
+  }
+  spanishModal.append(spanishAnswers);
+  spanishButton.on('click', spanishCompare);
+}
+
+function spanishCompare (event) {
 
 
-/* ********************************************************************
-spanish modal feature
-when two cards match:
-value of var englishWord = english word
-  -take name of class of cardFront
-take value of englishWord and find equivalent word in spanish
-  -from object with english keys and spanish values
-    -value of var spanishWord = spanish translation
-module pops up with message and three buttons with three different  words in spanish
-  -Hey, you matched the cards! Now do you know what it is in spanish?
-  -buttons will be populated from spanishWordsArray
-    -randomize the array via Fisher-Yates method
-    -add spanishWord to beginning of spanishWordsArray using unshift()
-    -take first three index into array spanishAnswersArray
-randomize spanishAnswersArray to populate buttons
-  -button with the correct answer will have added class of .answer
-    -search for spanishAnswerButton divs with text of spanishWord
-    -eventlistener of click on answer button to addClass .hidden to spanish modal div
-if correct spanish word is chosen, cards stay front side up
-  -if wrong spanish word is chosen, cards "flip" back*/
+
+}
+
+  var randomSpanishWords =  cardClassRandom(spanishWords);
+
+
+//use Fisher Yates method to shuffle only first four positions
+function spanishWordsRandom(array) {
+  var arrLength = array.length, temp, randomIndex;
+
+  // only shuffle first four elements
+  while (arrLength < 4) {
+    //use the .floor method to round down, because arrays are index 0
+    //and to prevent from choosing the final index of the front portion
+    //effectively doing nothing
+    //multiplying a decrementing arrLength keeps the already
+    //"shuffled" index at the end, and only shuffles from the
+    //front portion of the array
+    randomIndex = Math.floor(Math.random() * arrLength--);
+    //takes randomIndex and swap it with the arrLength using temp var
+    temp = array[arrLength];
+    array[arrLength] = array[randomIndex];
+    array[randomIndex] = temp;
+  }
+  return array;
+}
