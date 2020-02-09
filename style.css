@@ -14,6 +14,8 @@ body {
   width: 45%;
 }
 .right {
+
+  float: right;
   display: flex;
   flex-direction: column;
   width: 55%;
@@ -29,7 +31,6 @@ body {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  /* height: 20%; */
   text-align: center;
 }
 .stats,
@@ -66,13 +67,8 @@ span {
   margin: 0% 2%;
   position: relative;
 }
- .cardFront {
-   background-size: contain;
- }
- .cardBack {
-  background-size: contain;
- }
-.cardBack, .cardFront,
+.cardBack,
+.cardFront,
 .bag,
 .bathroom,
 .book,
@@ -125,16 +121,28 @@ span {
 .shoe {
   background-image: url("./assets/DoraPics/shoes.jpg");
 }
-.winModal {
+.winModalDisplay {
   position: fixed;
   top: 20%;
   right: 0;
-  width: 55%;
+  width: 56%;
   height: 80%;
   background-image: url('./assets/DoraPics/modalBackground.jpg');
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+.winModal span {
   color: blue;
   text-shadow: 1px 1px yellow;
   font-size: 7.2rem;
-  text-align: center;
-  border-radius: 20px;
+}
+.winModalButton {
+  display: block;
+  color: blue;
+  font-size: 3rem;
+  text-shadow: 1px 1px yellow;
+  margin-top: 2%;
+  border: 1px solid blue;
+  border-radius: 30px;
 }

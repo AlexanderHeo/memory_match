@@ -1,1 +1,118 @@
+@font-face {
+  font-family: 'Herculanum';
+  src: url('../fonts/Herculanum.svg#Herculanum') format('svg'),
+      url('../fonts/Herculanum.ttf') format('truetype'),
+      url('../fonts/Herculanum.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
 
+@font-face {
+  font-family: 'herculanum';
+  src: url('../fonts/herculanum.eot');
+  src: url('../fonts/herculanum.eot?#iefix') format('embedded-opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  margin: 0;
+  display: flex;
+}
+
+.content {
+  margin: auto;
+  height: 90vh;
+  width: 90vw;
+}
+
+.header {
+  width: 100%;
+  height: 20%;
+  background-color: lightsalmon;
+  text-align: center;
+}
+
+.header img {
+  height: 100%;
+}
+
+.elements {
+  width: 15%;
+}
+
+.main {
+  display: flex;
+  height: 80%;
+}
+
+.main img {
+  height: 72%;
+  width: 90%;
+  position: absolute;
+  filter: blur(2px);
+  z-index: -2;
+}
+
+.statsBox {
+  height: 100%;
+  width: 20%;
+  display: flex;
+  flex-direction: column;
+  font-family: 'herculanum';
+}
+
+.stats {
+  height: calc(100% / 3);
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.statsTitle,
+.statsData {
+  height: 40%;
+  width: 80%;
+  border: 0;
+  border-radius: 10px;
+  background-color: salmon;
+  opacity: 70%;
+  margin: auto;
+  display: flex;
+}
+
+.stats span {
+  margin: auto;
+  text-align: center;
+  font-size: 2vw;
+  font-weight: bolder;
+}
+
+.gameboard {
+  height: 100%;
+  width: 80%;
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+}
+
+.row {
+  display: flex;
+  height: 100%;
+  padding: 2%;
+}
+
+.cards {
+  height: 100%;
+  width: 100%;
+  margin: 0 1% 2% 1%;
+}
+
+.cardBack {
+  height: 100%;
+  width: 100%;
+  background-image: url('../images/map card back.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
