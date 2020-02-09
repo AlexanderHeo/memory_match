@@ -24,6 +24,7 @@ body {
   margin: 30px auto;
   height: 90vh;
   width: 90vw;
+  max-width: 1250px;
   border: 7px solid rgb(124, 124, 241);
   border-radius: 20px;
 }
@@ -56,6 +57,7 @@ body {
 .main img {
   height: 72%;
   width: 90%;
+  max-width: 1250px;
   position: absolute;
   filter: blur(2px);
   z-index: -2;
@@ -81,7 +83,6 @@ body {
   height: 40%;
   width: 80%;
   display: flex;
-  border: 0;
   border-radius: 10px;
   background-color: salmon;
   opacity: 70%;
@@ -124,18 +125,17 @@ body {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  border: 0;
   border-radius: 20px;
+  display: none;
 }
 
 .cardFront {
   height: 100%;
   width: 100%;
   position: absolute;
-  background-image: url('../images/card air.png');
+  background-image: url('../images/card images/aang glow.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  border: 0;
   border-radius: 20px;
 }
