@@ -21,23 +21,30 @@ body {
 }
 
 .content {
-  margin: auto;
+  margin: 30px auto;
   height: 90vh;
   width: 90vw;
+  border: 7px solid rgb(124, 124, 241);
+  border-radius: 20px;
 }
 
 .header {
-  width: 100%;
   height: 20%;
+  width: 100%;
   background-color: lightsalmon;
-  text-align: center;
+  display: flex;
+  border-radius: 10px 10px 0 0;
 }
 
-.header img {
+.logo {
+  margin: auto;
   height: 100%;
+  width: 38%;
 }
 
 .elements {
+  margin: auto;
+  height: 70%;
   width: 15%;
 }
 
@@ -73,46 +80,62 @@ body {
 .statsData {
   height: 40%;
   width: 80%;
+  display: flex;
   border: 0;
   border-radius: 10px;
   background-color: salmon;
   opacity: 70%;
   margin: auto;
-  display: flex;
 }
 
 .stats span {
   margin: auto;
   text-align: center;
-  font-size: 2vw;
+  font-size: 2.5vw;
   font-weight: bolder;
 }
 
 .gameboard {
   height: 100%;
   width: 80%;
-  padding: 5px;
   display: flex;
   flex-direction: column;
+  padding: 5px;
 }
 
 .row {
-  display: flex;
   height: 100%;
+  display: flex;
   padding: 2%;
 }
 
 .cards {
   height: 100%;
   width: 100%;
+  position: relative;
   margin: 0 1% 2% 1%;
 }
 
 .cardBack {
   height: 100%;
   width: 100%;
+  position: absolute;
   background-image: url('../images/map card back.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  border: 0;
+  border-radius: 20px;
+}
+
+.cardFront {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  background-image: url('../images/card air.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border: 0;
+  border-radius: 20px;
 }
