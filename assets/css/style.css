@@ -20,6 +20,11 @@ body {
   display: flex;
 }
 
+.hide {
+  display: none;
+}
+
+/* classes for main layout */
 .content {
   margin: 30px auto;
   height: 90vh;
@@ -28,32 +33,10 @@ body {
   border: 7px solid rgb(124, 124, 241);
   border-radius: 20px;
 }
-
-.header {
-  height: 20%;
-  width: 100%;
-  background-color: lightsalmon;
-  display: flex;
-  border-radius: 10px 10px 0 0;
-}
-
-.logo {
-  margin: auto;
-  height: 100%;
-  width: 38%;
-}
-
-.elements {
-  margin: auto;
-  height: 70%;
-  width: 15%;
-}
-
 .main {
   display: flex;
   height: 80%;
 }
-
 .main img {
   height: 72%;
   width: 90%;
@@ -63,6 +46,84 @@ body {
   z-index: -2;
 }
 
+/* classes for header */
+.header {
+  height: 20%;
+  width: 100%;
+  background-color: lightsalmon;
+  display: flex;
+  border-radius: 10px 10px 0 0;
+}
+.logo {
+  margin: auto;
+  height: 100%;
+  width: 38%;
+}
+.elements {
+  margin: auto;
+  height: 70%;
+  width: 15%;
+}
+
+/* classes for modals */
+.startModal,
+.winModal {
+  height: 90%;
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  background-color: salmon;
+  border-radius: 10px;
+  z-index: 4;
+}
+.startModalImage,
+.winModalImage {
+  display: flex;
+}
+.startModal img,
+.winModal img {
+  height: 70%;
+  margin: auto;
+}
+.startModalText {
+  height: 45%;
+  font-family: 'Herculanum';
+  font-size: 24px;
+  padding: 0 10% 0 10%;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+.startModalText::-webkit-scrollbar {
+  display: none;
+}
+.winModalText {
+  display: flex;
+}
+.winModalText span {
+  height: 10%;
+  margin: auto;
+  padding: 0 10% 0 10%;
+  font-family: 'Herculanum';
+  font-size: 50px;
+}
+.startModalButton,
+.winModalButton {
+  height: 10%;
+  width: 50%;
+  margin: auto;
+  border-radius: 10px;
+  background-color: lightsalmon;
+  color: rgb(10, 10, 143);
+  font-family: 'Herculanum';
+  font-size: 3.2vw;
+  text-shadow: 1px 2px white;
+}
+.startModalButton:active {
+  box-shadow: 2px 2px blue;
+}
+
+/* classes for stats */
 .statsBox {
   height: 100%;
   width: 20%;
@@ -70,14 +131,12 @@ body {
   flex-direction: column;
   font-family: 'herculanum';
 }
-
 .stats {
   height: calc(100% / 3);
   width: 100%;
   display: flex;
   flex-direction: column;
 }
-
 .statsTitle,
 .statsData {
   height: 40%;
@@ -88,7 +147,6 @@ body {
   opacity: 70%;
   margin: auto;
 }
-
 .stats span {
   margin: auto;
   text-align: center;
@@ -96,6 +154,7 @@ body {
   font-weight: bolder;
 }
 
+/* classes for gameboard */
 .gameboard {
   height: 100%;
   width: 80%;
@@ -103,39 +162,153 @@ body {
   flex-direction: column;
   padding: 5px;
 }
-
 .row {
   height: 100%;
   display: flex;
   padding: 2%;
+  transform-style: preserve-3d;
 }
 
+/* classes for cards */
 .cards {
   height: 100%;
   width: 100%;
   position: relative;
   margin: 0 1% 2% 1%;
+  transition: 1s linear all;
 }
-
-.cardBack {
-  height: 100%;
-  width: 100%;
-  position: absolute;
-  background-image: url('../images/map card back.jpg');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  border-radius: 20px;
-  display: none;
+.cards:hover {
+  cursor: pointer;
 }
-
+.cardBack,
 .cardFront {
   height: 100%;
   width: 100%;
   position: absolute;
-  background-image: url('../images/card images/aang glow.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   border-radius: 20px;
+  backface-visibility: hidden;
+}
+.cardBack {
+  background-image: url('../images/map card back.jpg');
+}
+.cardFront {
+  background-image: url('../images/cardImages/aang.png');
+  transform: rotateY(180deg);
+}
+.front {
+  animation: returnFront 0.5s forwards;
+  transition: 1s linear all;
+}
+@keyframes returnFront {
+  from {
+    transform: rotateY(0deg);
+  }
+  to {
+    transform: rotateY(180deg);
+  }
+}
+.back {
+  animation: returnBack 0.5s forwards;
+  transition: 1s linear all;
+}
+@keyframes returnBack {
+  from {
+    transform: rotateY(180deg);
+  }
+  to {
+    transform: rotateY(0deg);
+  }
+}
+/* classes for card flip animation */
+.backFlip {
+  animation: backFlip 0.5s forwards;
+  transition: 1s linear all;
+}
+@keyframes backFlip {
+  from {
+    transform: rotateY(0deg);
+  }
+  to {
+    transform: rotateY(180deg);
+  }
+}
+.frontFlip {
+  animation: forwards 0.5s frontFlip;
+  transition: 1s linear all;
+}
+@keyframes frontFlip {
+  from {
+    transform: rotateY(180deg);
+  }
+  to {
+    transform: rotateY(0deg);
+  }
+}
+
+/* classes for card images */
+.aang {
+  background-image: url('../images/cardImages/aang.png');
+}
+.aangGlow {
+  background-image: url('../images/cardImages/aangGlow.png');
+}
+.air {
+  background-image: url('../images/cardImages/airCard.png');
+}
+.appa {
+  background-image: url('../images/cardImages/appa.png');
+}
+.azulaBlue {
+  background-image: url('../images/cardImages/azulaBlue.png');
+}
+.earth {
+  background-image: url('../images/cardImages/earthCard.png');
+}
+.fire {
+  background-image: url('../images/cardImages/fireCard.png');
+}
+.iroh {
+  background-image: url('../images/cardImages/iroh.png');
+}
+.irohSmiling {
+  background-image: url('../images/cardImages/irohSmiling.png');
+}
+.katara {
+  background-image: url('../images/cardImages/katara.png');
+}
+.kataraCoat {
+  background-image: url('../images/cardImages/kataraCoat.png');
+}
+.momo {
+  background-image: url('../images/cardImages/momo.png');
+}
+.sokka {
+  background-image: url('../images/cardImages/sokka.png');
+}
+.sokkaSmiling {
+  background-image: url('../images/cardImages/sokkaSmile.png');
+}
+.suki {
+  background-image: url('../images/cardImages/suki.png');
+}
+.toph {
+  background-image: url('../images/cardImages/toph.png');
+}
+.tophBeifong {
+  background-image: url('../images/cardImages/tophBeifong.png');
+}
+.tuiAndLa {
+  background-image: url('../images/cardImages/tuiAndLa.png');
+}
+.water {
+  background-image: url('../images/cardImages/waterCard.png');
+}
+.zuko {
+  background-image: url('../images/cardImages/zuko.png');
+}
+.zukoFlames {
+  background-image: url('../images/cardImages/zukoFlames.png');
 }
