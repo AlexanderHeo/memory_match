@@ -1,10 +1,27 @@
 $(document).ready(initializeApp);
 
+var cardClassArray = ['aang', 'aangGlow', 'air', 'appa', 'azula', 'azulaBlue',
+  'earth', 'fire', 'iroh', 'irohSmiling', 'katara', 'kataraCoat', 'momo',
+  'sokka', 'sokkaSmiling', 'suki', 'toph', 'tophBeifong', 'tuiAndLa', 'water',
+  'zuko', 'zukoFlames'];
+var firstCardClicked = null;
+var secondCardClicked = null;
+var matches = null;
+
 function initializeApp() {
-  // shuffle(cardClassArray);
-  createGameboard();
+  var cardClass = randomize(cardClassArray);
+  createGameboard(cardClass);
   addClickHandlers();
-  addCardClass();
+}
+
+function randomize(cardClassArray) {
+  var shuffled = shuffle(cardClassArray);
+  var firstShuffled = shuffled.splice(0,9);
+  var copyArray = [...firstShuffled];
+  var secondShuffled = shuffle(copyArray);
+  var combinedArray = firstShuffled.concat(secondShuffled);
+  var cardClasses = shuffle(combinedArray);
+  return cardClasses;
 }
 
 function shuffle(array) {
@@ -18,7 +35,8 @@ function shuffle(array) {
   return array;
 }
 
-function createGameboard() {
+function createGameboard(cardClass) {
+  var h = 0;
   var gameboard = $('.gameboard');
   for (var rows = 0; rows < 3; rows++) {
     var row = $('<div>', { class: 'row' });
@@ -26,6 +44,8 @@ function createGameboard() {
       var card = $('<div>', { class: 'cards' });
       var cardFront = $('<div>', { class: 'cardFront front' });
       var cardBack = $('<div>', { class: 'cardBack back' });
+      cardFront.addClass(cardClass[h]);
+      h++;
       card.append(cardFront);
       card.append(cardBack);
       row.append(card);
@@ -49,8 +69,14 @@ function restartGame() {
 }
 
 function handleCardClick(event) {
-  var clickedCard = $(event.currentTarget);
+  var eventTarget = $(event.currentTarget);
 
-  clickedCard.find('.cardBack').toggleClass('backFlip');
-  clickedCard.find('.cardFront').toggleClass('frontFlip');
+  eventTarget.find('.cardBack').toggleClass('backFlip');
+  eventTarget.find('.cardFront').toggleClass('frontFlip');
+  var clickedCard = eventTarget[0].children[0].classList[2];
+  if (!firstCardClicked) {
+    firstCardClicked = clickedCard;
+  } else {
+    secondCardClicked = clickedCard;
+  }
 }
