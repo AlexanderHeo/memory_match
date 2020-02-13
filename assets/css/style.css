@@ -71,20 +71,17 @@ body {
 }
 
 /* classes for modals */
-.winModalText {
-  /* display: none; */
-}
 .startModal,
 .winModal {
   height: 90%;
   width: 90%;
+  max-width: 1250px;
   display: flex;
   flex-direction: column;
   position: absolute;
   background-color: salmon;
   border-radius: 10px;
   z-index: 4;
-  /* display: none; */
 }
 .startModalImage,
 .winModalImage {
@@ -206,7 +203,6 @@ body {
   background-image: url('../images/map card back.jpg');
 }
 .cardFront {
-  /* background-image: url('../images/cardImages/aang.png'); */
   transform: rotateY(180deg);
 }
 .front {

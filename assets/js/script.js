@@ -87,10 +87,8 @@ function restartGame() {
 
 function handleCardClick(event) {
   var eventTarget = $(event.currentTarget);
-
   eventTarget.find('.cardBack').removeClass('back').addClass('backFlip');
   eventTarget.find('.cardFront').removeClass('front').addClass('frontFlip');
-
   if (!firstCardClicked) {
     firstCardClicked = eventTarget;
     $(firstCardClicked).off('click', handleCardClick);
