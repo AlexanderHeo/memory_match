@@ -23,7 +23,11 @@ body {
 .hide {
   display: none;
 }
-
+.cheatMode {
+  position: absolute;
+  width: 99px;
+  height: 24px;
+}
 /* classes for main layout */
 .content {
   margin: 30px auto;
@@ -66,6 +70,9 @@ body {
 }
 
 /* classes for modals */
+.winModalText {
+  /* display: none; */
+}
 .startModal,
 .winModal {
   height: 90%;
@@ -76,7 +83,7 @@ body {
   background-color: salmon;
   border-radius: 10px;
   z-index: 4;
-  display: none;
+  /* display: none; */
 }
 .startModalImage,
 .winModalImage {
@@ -173,7 +180,7 @@ body {
 /* classes for cards */
 .cards {
   height: 100%;
-  width: 100%;
+  width: 40%;
   position: relative;
   margin: 0 1% 2% 1%;
   transition: 1s linear all;
