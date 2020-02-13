@@ -27,6 +27,7 @@ body {
   position: absolute;
   width: 99px;
   height: 24px;
+  display: none;
 }
 /* classes for main layout */
 .content {
@@ -101,6 +102,7 @@ body {
   padding: 0 10% 0 10%;
   overflow-y: scroll;
   overflow-x: hidden;
+  text-align: center;
 }
 .startModalText::-webkit-scrollbar {
   display: none;
@@ -114,6 +116,7 @@ body {
   padding: 0 10% 0 10%;
   font-family: 'Herculanum';
   font-size: 50px;
+  text-align: center;
 }
 .startModalButton,
 .winModalButton {
