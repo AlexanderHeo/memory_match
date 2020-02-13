@@ -23,7 +23,12 @@ body {
 .hide {
   display: none;
 }
-
+.cheatMode {
+  position: absolute;
+  width: 99px;
+  height: 24px;
+  display: none;
+}
 /* classes for main layout */
 .content {
   margin: 30px auto;
@@ -66,6 +71,9 @@ body {
 }
 
 /* classes for modals */
+.winModalText {
+  /* display: none; */
+}
 .startModal,
 .winModal {
   height: 90%;
@@ -76,7 +84,7 @@ body {
   background-color: salmon;
   border-radius: 10px;
   z-index: 4;
-  display: none;
+  /* display: none; */
 }
 .startModalImage,
 .winModalImage {
@@ -94,6 +102,7 @@ body {
   padding: 0 10% 0 10%;
   overflow-y: scroll;
   overflow-x: hidden;
+  text-align: center;
 }
 .startModalText::-webkit-scrollbar {
   display: none;
@@ -107,6 +116,7 @@ body {
   padding: 0 10% 0 10%;
   font-family: 'Herculanum';
   font-size: 50px;
+  text-align: center;
 }
 .startModalButton,
 .winModalButton {
@@ -173,7 +183,7 @@ body {
 /* classes for cards */
 .cards {
   height: 100%;
-  width: 100%;
+  width: 40%;
   position: relative;
   margin: 0 1% 2% 1%;
   transition: 1s linear all;
