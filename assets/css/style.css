@@ -82,6 +82,7 @@ body {
   background-color: salmon;
   border-radius: 10px;
   z-index: 4;
+  display: none;
 }
 .startModalImage,
 .winModalImage {
@@ -321,4 +322,56 @@ body {
 }
 .zukoFlames {
   background-image: url('../images/cardImages/zukoFlames.png');
+}
+
+@media screen and (max-width: 768px) {
+  .logo {
+    height: 70%;
+  }
+  .elements {
+    height: 50%;
+  }
+  .main {
+    flex-direction: column;
+  }
+  .statsBox {
+    height: 15%;
+    width: 100%;
+    flex-direction: row;
+  }
+  .stats {
+    height: 100%;
+    width: calc(100% / 3);
+  }
+  .gameboard {
+    width: 100%;
+  }
+  .cards {
+    height: 90%;
+  }
+}
+
+@media screen and (max-width: 667px) {
+  .logo {
+    width: 20%;
+  }
+  .elements {
+    width: 16%;
+    height: 100%;
+  }
+  .stats span {
+    font-size: 12px;
+  }
+  .gameboard {
+    padding: 3px;
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .logo {
+    height: 40%;
+  }
+  .elements {
+    height: 40%;
+  }
 }
