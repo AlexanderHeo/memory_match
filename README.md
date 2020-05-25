@@ -23,7 +23,7 @@ A card matching game with an Avatar: the Last Airbender theme, made with HTML5, 
 
 ## Preview
 
-![SGT React](memory-match.gif)
+![Memory Match](memory-match.gif)
 
 # Getting Started
 1. Clone the respository.
