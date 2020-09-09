@@ -23,7 +23,7 @@ function initializeApp() {
 
 function randomize(cardClassArray) {
   var shuffled = shuffle(cardClassArray);
-  var firstShuffled = shuffled.splice(0,9);
+  var firstShuffled = shuffled.slice(0,9);
   var copyArray = [...firstShuffled];
   var secondShuffled = shuffle(copyArray);
   var combinedArray = firstShuffled.concat(secondShuffled);

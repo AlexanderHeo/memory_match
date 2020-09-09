@@ -82,7 +82,7 @@ body {
   background-color: salmon;
   border-radius: 10px;
   z-index: 4;
-  display: none;
+  /* display: none; */
 }
 .startModalImage,
 .winModalImage {
